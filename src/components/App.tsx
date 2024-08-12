@@ -36,7 +36,9 @@ export class App extends React.Component<{}, AppState> {
               <Route exact path="/login">
                 <Login authService={this.authService} setUser={this.serUser}/>
               </Route>
-              <Route exact path="/profile" component={Profile}/>
+              <Route exact path="/profile">
+                <Profile user={this.state?.user} authService={this.authService}/>
+              </Route>
             </Switch>
           </div>
         </Router>

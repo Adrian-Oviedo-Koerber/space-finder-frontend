@@ -7,6 +7,8 @@ import History from "../utils/History";
 import { Navbar } from "./Navbar";
 import { Home } from "./Home";
 import { Profile } from "./Profile";
+import { Spaces } from "./spaces/Spaces";
+import { DataService } from "../services/DataService";
 
 interface AppState {
   user: User | undefined;
@@ -20,6 +22,7 @@ export class App extends React.Component<{}, AppState> {
   }
 
   private authService: AuthService = new AuthService();
+  private dataService: DataService = new DataService();
 
   private serUser(user: User) {
     this.setState({user: user});
@@ -38,6 +41,9 @@ export class App extends React.Component<{}, AppState> {
               </Route>
               <Route exact path="/profile">
                 <Profile user={this.state?.user} authService={this.authService}/>
+              </Route>
+              <Route exact path="/spaces">
+                <Spaces dataService={this.dataService}/>
               </Route>
             </Switch>
           </div>

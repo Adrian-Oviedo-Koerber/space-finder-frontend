@@ -1,5 +1,6 @@
 import { Component, ReactNode } from "react";
 import genericImage from '../../assets/genericImage.jpg';
+import './SpaceComponent.css';
 
 interface SpaceComponentProps {
     spaceId: string,
@@ -19,11 +20,11 @@ interface SpaceComponentProps {
     }
 
     render(): ReactNode {
-        return <div>
+        return <div className="spaceComponent">
             {this.renderImage()}
-            <label>{this.props.name}</label><br/>
-            <label>{this.props.spaceId}</label><br/>
-            <label>{this.props.location}</label><br/>
+            <label className="name">{this.props.name}</label><br/>
+            <label className="spaceId">{this.props.spaceId}</label><br/>
+            <label className="location">{this.props.location}</label><br/>
             <button onClick={() => this.props.reserveSpace(this.props.spaceId)}>Reserve</button>
         </div>
     }

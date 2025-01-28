@@ -1,6 +1,5 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { act } from 'react';
 import { fireEvent, waitFor } from '@testing-library/react'
 import { Login } from '../../src/components/Login';
 import { User } from '../../src/model/Model';
@@ -24,7 +23,7 @@ describe('Login component test suite', () => {
     beforeEach(() => {
         container = document.createElement('div');
         document.body.appendChild(container);
-        act(() => {
+        React.act(() => {
             const root = createRoot(container!);
             root.render(<Login authService={authServiceMock as any} setUser={setUserMock}/>);
         });
@@ -56,7 +55,7 @@ describe('Login component test suite', () => {
         const passwordInput = inputs[1];
         const loginButton = inputs[2];
 
-        act(() => {
+        React.act(() => {
             fireEvent.change(loginInput, {target:{value: 'someUser'}});
             fireEvent.change(passwordInput, {target:{value: 'somePass'}});
             fireEvent.click(loginButton);
@@ -75,7 +74,7 @@ describe('Login component test suite', () => {
         const passwordInput = inputs[1];
         const loginButton = inputs[2];
 
-        act(() => {
+        React.act(() => {
             fireEvent.change(loginInput, {target:{value: 'someUser'}});
             fireEvent.change(passwordInput, {target:{value: 'someEmail'}});
             loginButton.dispatchEvent(new MouseEvent('click', {bubbles: true}));   
@@ -95,7 +94,7 @@ describe('Login component test suite', () => {
         const passwordInput = inputs[1];
         const loginButton = inputs[2];
 
-        act(() => {
+        React.act(() => {
             fireEvent.change(loginInput, {target:{value: 'someUser'}});
             fireEvent.change(passwordInput, {target:{value: 'someEmail'}});
             loginButton.dispatchEvent(new MouseEvent('click', {bubbles: true}));   
